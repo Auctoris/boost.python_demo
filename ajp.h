@@ -1,3 +1,6 @@
+#ifndef ajp_h
+#define ajp_h
+
 #include <string>
 
 class ajp
@@ -11,6 +14,7 @@ public:
     void inc_counter();
     std::string get_name();
     void set_counter(int);
+    double get_cost();
     
 private:
     std::string name;
@@ -18,3 +22,5 @@ private:
     double cost;
     uint64_t id;
 };
+
+#endif

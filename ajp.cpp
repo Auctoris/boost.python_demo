@@ -40,3 +40,8 @@ std::string ajp::get_name()
 {
     return this->name;
 }
+
+double ajp::get_cost()
+{
+    return this->cost;
+}
