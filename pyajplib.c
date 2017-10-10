@@ -49,6 +49,11 @@ public:
         this->counter++;
     }
 
+    std::string get_name()
+    {
+        return this->name;
+    }
+
 private:
     std::string name;
     int counter;
@@ -65,5 +70,6 @@ BOOST_PYTHON_MODULE(pyajplib)
         .def("get_price", &ajp::get_price)
         .def("get_counter", &ajp::get_counter)
         .def("set_counter", &ajp::set_counter)
-        .def("inc_counter", &ajp::inc_counter);
+        .def("inc_counter", &ajp::inc_counter)
+        .def("get_name", &ajp::get_name);
 }

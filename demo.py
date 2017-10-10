@@ -1,7 +1,7 @@
 import pyajplib
 
 ajp = pyajplib.ajp("Apple", 0.79)
-print("0x{:02X}".format(ajp.get_id()))
+print("Item name: {}, id = 0x{:02X}".format(ajp.get_name(), ajp.get_id()))
 
 print("Counter = {}, price = {}".format(ajp.get_counter(), ajp.get_price()))
 
