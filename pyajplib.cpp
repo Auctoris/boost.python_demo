@@ -1,65 +1,8 @@
 #include <boost/python.hpp>
 #include <string>
 
-std::string multi_bob(int n)
-{
-   std::string name = "Bob";
-   std::string r = "";
-   for (int i=0;i<n;i++)
-      r += name;
-   return r;
-}
-
-class ajp
-{
-public:
-    ajp(const std::string& name, double cost)
-    {
-        // Constructor ... we need to assign the name & cost; generate the id; and initialize the counter...
-        this->name = name;
-        this->cost = cost;
-
-        // Demo code - this would be a UUID...
-        this->id = 0xAB12345;
-        this->counter = 0;
-    }
-
-    uint64_t get_id()
-    {
-        return this->id;
-    }
-
-    double get_price()
-    {
-        return this->counter * this->cost;
-    }
-
-    int get_counter()
-    {
-        return this->counter;
-    }
-
-    void set_counter(int i)
-    {
-        this->counter = i;
-    }
-
-    void inc_counter()
-    {
-        this->counter++;
-    }
-
-    std::string get_name()
-    {
-        return this->name;
-    }
-
-private:
-    std::string name;
-    int counter;
-    double cost;
-    uint64_t id;
-};
+#include "ajp.h"
+#include "ajp2.h"
 
 BOOST_PYTHON_MODULE(pyajplib)
 {
@@ -71,5 +14,17 @@ BOOST_PYTHON_MODULE(pyajplib)
         .def("get_counter", &ajp::get_counter)
         .def("set_counter", &ajp::set_counter)
         .def("inc_counter", &ajp::inc_counter)
-        .def("get_name", &ajp::get_name);
+        .def("get_name", &ajp::get_name)
+        .def("get_cost", &ajp::get_cost);
+
+    class_<xyz>("xyz", init<std::string, double, double>())
+        .def("get_id", &xyz::get_id)
+        .def("get_price", &xyz::get_price)
+        .def("get_counter", &xyz::get_counter)
+        .def("set_counter", &xyz::set_counter)
+        .def("inc_counter", &xyz::inc_counter)
+        .def("get_discount", &xyz::get_discount)
+        .def("set_discount", &xyz::set_discount)
+        .def("get_name", &xyz::get_name)
+        .def("get_cost", &xyz::get_cost);
 }
